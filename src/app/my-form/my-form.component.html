@@ -1,0 +1,52 @@
+<form [formGroup]="facultyForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Факультет</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Факультет: </ion-label>
+        <ion-input id="faculty-name" type="text" formControlName="facultyName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Декан: </ion-label>
+        <ion-input id="faculty-dekan" type="text" formControlName="facultyDekan"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Номер телефону: </ion-label>
+        <ion-input id="faculty-phoneNumber" type="text"
+          formControlName="facultyPhoneNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Адреса: </ion-label>
+        <ion-input id="faculty-address" type="text"
+          formControlName="facultyAddress"></ion-input>
+      </ion-item>
+      <ion-card formArrayName="professors">
+        <ion-card-header>
+          <ion-card-title>Викладачі</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="tertiary" (click)="addProfessors()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Додати викладача
+          </ion-button>
+          <ion-item *ngFor="let professors of getControls();let i = index">
+            <ion-input type="text" formControlName={{i}}
+              placeholder="ПІБ викладача"></ion-input>
+            <ion-button (click)="deleteProfessor(i)"
+              color="tertiary">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Видалити
+            </ion-button>
+
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <ion-button type="submit" color="my-color"
+    expand="block" fill="outline" [disabled]="!facultyForm.valid">
+    Submit
+  </ion-button>
+</form>
