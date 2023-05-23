@@ -1,0 +1,22 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-label>Факультет: </ion-label>
+      <ion-input [value]="faculty.name" #Inputn></ion-input>
+    </ion-card-title>
+    <ion-card-subtitle>
+      <ion-label>Декан: </ion-label>
+      <ion-input [value]="faculty.dekan" #Inputd></ion-input>
+      <ion-label>Номер телефону</ion-label>
+      <ion-input [value]="faculty.phoneNumber" #Inputp></ion-input>
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label>Адреса: </ion-label>
+    <ion-input [value]="faculty.address" #Inputa></ion-input>
+  </ion-card-content>
+  <ion-button
+    (click)="save(Inputn.value,Inputd.value,Inputp.value,Inputa.value)">
+    Зберегти
+  </ion-button>
+</ion-card>

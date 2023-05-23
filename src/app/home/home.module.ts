@@ -6,6 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { MyFormComponent } from '../my-form/my-form.component';
+import { ViewformComponent } from '../viewform/viewform.component';
+import { UpdateformComponent } from '../updateform/updateform.component';
 
 
 
@@ -17,6 +19,6 @@ import { MyFormComponent } from '../my-form/my-form.component';
     HomePageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [HomePage, MyFormComponent]
+  declarations: [HomePage, MyFormComponent, ViewformComponent, UpdateformComponent]
 })
 export class HomePageModule { }

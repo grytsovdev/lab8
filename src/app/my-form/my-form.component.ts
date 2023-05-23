@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Faculty } from './Class/Faculty';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { phoneValidaror } from './Service/phoneValidator';
 import { AddressValidatorService } from '../address-validator.service';
+
 
 @Component({
   selector: 'app-my-form',
   templateUrl: './my-form.component.html',
   styleUrls: ['./my-form.component.scss'],
 })
+
+
 export class MyFormComponent implements OnInit {
+
+
+
+  @Output() facultyAdd: EventEmitter<Faculty> = new EventEmitter<Faculty>();
 
   facultyForm!: FormGroup;
   faculty!: Faculty;
@@ -36,7 +43,9 @@ export class MyFormComponent implements OnInit {
   getControls() {
     return (this.facultyForm.get('professors') as FormArray).controls;
   }
+
   onSubmit() {
+
     let name = this.facultyForm.value.facultyName;
     let dekan = this.facultyForm.value.facultyDekan;
     let phone = this.facultyForm.value.facultyPhoneNumber;
@@ -47,6 +56,7 @@ export class MyFormComponent implements OnInit {
       this.faculty = new Faculty(name, dekan, phone, address, professors)
       console.log("submit")
       console.log(this.faculty)
+      this.facultyAdd.emit(this.faculty)
     }
     else
       alert("Помилка")
